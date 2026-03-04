@@ -79,6 +79,27 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
+
+          {/* Hire Me Button */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
+            <Link to="/hire-me">
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(198,169,114,0.6)" }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-2.5 bg-gradient-to-r from-gold via-[#E6C78F] to-gold text-black text-sm font-semibold rounded-full hover:shadow-[0_0_30px_rgba(198,169,114,0.4)] transition-all duration-300 relative overflow-hidden group"
+              >
+                <span className="relative z-10">Hire Me</span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-[#E6C78F] to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={false}
+                />
+              </motion.button>
+            </Link>
+          </motion.div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -137,6 +158,14 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
+              
+              {/* Mobile Hire Me Button */}
+              <Link to="/hire-me" onClick={() => setMobileOpen(false)}>
+                <button className="w-full px-6 py-3 bg-gradient-to-r from-gold to-[#E6C78F] text-black text-sm font-semibold rounded-full mt-4">
+                  Hire Me
+                </button>
+              </Link>
+              
               {isAuthenticated ? (
                 <>
                   {isAdmin && (

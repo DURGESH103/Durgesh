@@ -11,6 +11,7 @@ import AdminRoute from './components/AdminRoute';
 import { preloadImage } from './utils/imageOptimization';
 
 const Home = lazy(() => import(/* webpackChunkName: "home" */ './pages/Home'));
+const HireMe = lazy(() => import(/* webpackChunkName: "hire-me" */ './pages/HireMe'));
 const Projects = lazy(() => import(/* webpackChunkName: "projects" */ './pages/Projects'));
 const ProjectDetail = lazy(() => import(/* webpackChunkName: "project-detail" */ './pages/ProjectDetail'));
 const SkillsPage = lazy(() => import(/* webpackChunkName: "skills" */ './pages/SkillsPage'));
@@ -40,6 +41,7 @@ function App() {
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/" element={<MainLayout><Home /></MainLayout>} />
+              <Route path="/hire-me" element={<MainLayout><HireMe /></MainLayout>} />
               <Route path="/projects" element={<MainLayout><Projects /></MainLayout>} />
               <Route path="/project/:slug" element={<MainLayout><ProjectDetail /></MainLayout>} />
               <Route path="/skills" element={<MainLayout><SkillsPage /></MainLayout>} />
