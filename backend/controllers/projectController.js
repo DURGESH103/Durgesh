@@ -1,0 +1,125 @@
+import Project from '../models/Project.js';
+import fs from 'fs';
+import path from 'path';
+
+const generateSlug = (title) => {
+  return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+};
+
+const deleteFile = (filePath) => {
+  try {
+    if (filePath && fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+    }
+  } catch (error) {
+    console.error('File deletion error:', error.message);
+  }
+};
+
+const getRelativePath = (filePath) => {
+  return filePath ? filePath.replace(/\\/g, '/') : '';
+};
+
+export const createProject = async (req, res) => {
+  try {
+    const { title, shortDescription, fullDescription, techStack, liveLink, githubLink, featured, category } = req.body;
+    
+    if (!title || !shortDescription || !fullDescription) {
+      return res.status(400).json({ message: 'Title, short description, and full description are required' });
+    }
+    
+    const slug = generateSlug(title);
+    const featuredImage = getRelativePath(req.files?.featuredImage?.[0]?.path || '');
+    const galleryImages = req.files?.galleryImages?.map(file => getRelativePath(file.path)) || [];
+    
+    const project = new Project({
+      title,
+      slug,
+      shortDescription,
+      fullDescription,
+      techStack: JSON.parse(techStack || '[]'),
+      liveLink,
+      githubLink,
+      featuredImage,
+      galleryImages,
+      featured: featured === 'true',
+      category
+    });
+    
+    await project.save();
+    res.status(201).json(project);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getAllProjects = async (req, res) => {
+  try {
+    const projects = await Project.find().sort({ createdAt: -1 });
+    res.json(projects);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getProjectBySlug = async (req, res) => {
+  try {
+    const project = await Project.findOne({ slug: req.params.slug });
+    if (!project) return res.status(404).json({ message: 'Project not found' });
+    res.json(project);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const updateProject = async (req, res) => {
+  try {
+    const { title, shortDescription, fullDescription, techStack, liveLink, githubLink, featured, category } = req.body;
+    
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ message: 'Project not found' });
+    
+    if (title && title !== project.title) {
+      project.slug = generateSlug(title);
+    }
+    
+    project.title = title || project.title;
+    project.shortDescription = shortDescription || project.shortDescription;
+    project.fullDescription = fullDescription || project.fullDescription;
+    project.techStack = techStack ? JSON.parse(techStack) : project.techStack;
+    project.liveLink = liveLink || project.liveLink;
+    project.githubLink = githubLink || project.githubLink;
+    project.featured = featured !== undefined ? featured === 'true' : project.featured;
+    project.category = category || project.category;
+    
+    if (req.files?.featuredImage?.[0]) {
+      deleteFile(project.featuredImage);
+      project.featuredImage = getRelativePath(req.files.featuredImage[0].path);
+    }
+    
+    if (req.files?.galleryImages) {
+      project.galleryImages.forEach(img => deleteFile(img));
+      project.galleryImages = req.files.galleryImages.map(file => getRelativePath(file.path));
+    }
+    
+    await project.save();
+    res.json(project);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const deleteProject = async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ message: 'Project not found' });
+    
+    deleteFile(project.featuredImage);
+    project.galleryImages.forEach(img => deleteFile(img));
+    
+    await project.deleteOne();
+    res.json({ message: 'Project deleted' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
