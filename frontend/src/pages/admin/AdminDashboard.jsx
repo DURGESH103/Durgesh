@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
-import { LogOut, FolderKanban, Award, Code, Image, User } from 'lucide-react';
+import { LogOut, FolderKanban, Award, Code, Image, User, BookOpen } from 'lucide-react';
 import ProjectsManager from './ProjectsManager';
 import CertificationsManager from './CertificationsManager';
 import SkillsManager from './SkillsManager';
 import GalleryManager from './GalleryManager';
 import AboutManager from './AboutManager';
+import BlogManager from './BlogManager';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('projects');
@@ -20,11 +21,12 @@ const AdminDashboard = () => {
   };
 
   const tabs = [
-    { id: 'projects', label: 'Projects', icon: <FolderKanban className="w-5 h-5" /> },
+    { id: 'projects',       label: 'Projects',       icon: <FolderKanban className="w-5 h-5" /> },
     { id: 'certifications', label: 'Certifications', icon: <Award className="w-5 h-5" /> },
-    { id: 'skills', label: 'Skills', icon: <Code className="w-5 h-5" /> },
-    { id: 'gallery', label: 'Gallery', icon: <Image className="w-5 h-5" /> },
-    { id: 'about', label: 'About', icon: <User className="w-5 h-5" /> }
+    { id: 'skills',         label: 'Skills',         icon: <Code className="w-5 h-5" /> },
+    { id: 'gallery',        label: 'Gallery',        icon: <Image className="w-5 h-5" /> },
+    { id: 'about',          label: 'About',          icon: <User className="w-5 h-5" /> },
+    { id: 'blog',           label: 'Blog',           icon: <BookOpen className="w-5 h-5" /> },
   ];
 
   return (
@@ -79,7 +81,8 @@ const AdminDashboard = () => {
           {activeTab === 'certifications' && <CertificationsManager />}
           {activeTab === 'skills' && <SkillsManager />}
           {activeTab === 'gallery' && <GalleryManager />}
-          {activeTab === 'about' && <AboutManager />}
+          {activeTab === 'about'   && <AboutManager />}
+          {activeTab === 'blog'    && <BlogManager />}
         </motion.div>
       </div>
     </div>

@@ -19,9 +19,10 @@ const Navbar = () => {
   }, []);
 
   const mainLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Certifications', path: '/certifications' },
+    { name: 'Home',           path: '/' },
+    { name: 'Projects',        path: '/projects' },
+    { name: 'Certifications',  path: '/certifications' },
+    { name: 'Blog',            path: '/blog' },
   ];
 
   const dropdownLinks = [

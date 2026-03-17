@@ -76,3 +76,12 @@ export const updateAbout = (formData) => api.put('/about', formData, {
 });
 
 export default api;
+
+// Blogs
+export const getBlogs = (params) => api.get('/blogs', { params });
+export const getBlogBySlug = (slug) => api.get(`/blogs/${slug}`);
+export const getRelatedBlogs = (slug) => api.get(`/blogs/${slug}/related`);
+export const createBlog = (formData) => api.post('/blogs', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+export const updateBlog = (id, formData) => api.put(`/blogs/${id}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+export const toggleBlogPublish = (id) => api.patch(`/blogs/${id}/publish`);
+export const deleteBlog = (id) => api.delete(`/blogs/${id}`);

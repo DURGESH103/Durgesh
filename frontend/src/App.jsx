@@ -23,6 +23,8 @@ const ContactPage = lazy(() => import(/* webpackChunkName: "contact" */ './pages
 const Login = lazy(() => import(/* webpackChunkName: "login" */ './pages/Login'));
 const Register = lazy(() => import(/* webpackChunkName: "register" */ './pages/Register'));
 const NotFound = lazy(() => import(/* webpackChunkName: "notfound" */ './pages/NotFound'));
+const BlogList = lazy(() => import(/* webpackChunkName: "blog" */ './pages/BlogList'));
+const BlogDetail = lazy(() => import(/* webpackChunkName: "blog-detail" */ './pages/BlogDetail'));
 const AdminLogin = lazy(() => import(/* webpackChunkName: "admin-login" */ './pages/admin/AdminLogin'));
 const AdminDashboard = lazy(() => import(/* webpackChunkName: "admin-dashboard" */ './pages/admin/AdminDashboard'));
 
@@ -51,6 +53,8 @@ function App() {
               <Route path="/gallery" element={<MainLayout><GalleryPage /></MainLayout>} />
               <Route path="/about" element={<MainLayout><AboutPage /></MainLayout>} />
               <Route path="/contact" element={<MainLayout><ContactPage /></MainLayout>} />
+              <Route path="/blog" element={<MainLayout><BlogList /></MainLayout>} />
+              <Route path="/blog/:slug" element={<MainLayout><BlogDetail /></MainLayout>} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/admin/login" element={<AdminLogin />} />

@@ -11,6 +11,7 @@ import certificationRoutes from './routes/certificationRoutes.js';
 import skillRoutes from './routes/skillRoutes.js';
 import galleryRoutes from './routes/galleryRoutes.js';
 import aboutRoutes from './routes/aboutRoutes.js';
+import blogRoutes from './routes/blogRoutes.js';
 
 dotenv.config();
 
@@ -57,6 +58,7 @@ app.use('/api/certifications', certificationRoutes);
 app.use('/api/skills', skillRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/about', aboutRoutes);
+app.use('/api/blogs', blogRoutes);
 
 // MongoDB Connection with retry
 const connectDB = async () => {
