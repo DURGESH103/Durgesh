@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { useMobileOptimization } from './hooks/useMobileOptimization';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -35,6 +36,7 @@ function App() {
   }, []);
 
   return (
+    <ThemeProvider>
     <AuthProvider>
       <ErrorBoundary>
         <Router>
@@ -59,6 +61,7 @@ function App() {
         </Router>
       </ErrorBoundary>
     </AuthProvider>
+    </ThemeProvider>
   );
 }
 
