@@ -30,15 +30,19 @@ export const login = (data) => api.post('/auth/login', data);
 export const register = (data) => api.post('/auth/register', data);
 
 // Projects
-export const getProjects = () => api.get('/projects');
-export const getProjectBySlug = (slug) => api.get(`/projects/${slug}`);
-export const createProject = (formData) => api.post('/projects', formData, { 
+export const getProjects         = ()         => api.get('/projects');
+export const getFeaturedProjects = ()         => api.get('/projects/featured');
+export const getProjectBySlug    = (slug)     => api.get(`/projects/${slug}`);
+export const toggleFeatured      = (id)       => api.patch(`/projects/${id}/featured`);
+export const createProject = (formData, config = {}) => api.post('/projects', formData, {
   headers: { 'Content-Type': 'multipart/form-data' },
-  timeout: 30000
+  timeout: 60000,
+  ...config,
 });
-export const updateProject = (id, formData) => api.put(`/projects/${id}`, formData, { 
+export const updateProject = (id, formData, config = {}) => api.put(`/projects/${id}`, formData, {
   headers: { 'Content-Type': 'multipart/form-data' },
-  timeout: 30000
+  timeout: 60000,
+  ...config,
 });
 export const deleteProject = (id) => api.delete(`/projects/${id}`);
 

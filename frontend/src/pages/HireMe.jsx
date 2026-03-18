@@ -313,9 +313,10 @@ const HireMe = () => {
   return (
     <>
       <SEO 
-        title="Hire Me - Durgesh Kumar | Full Stack Developer"
-        description="Ready to bring your ideas to life? Hire me for full stack web development, UI/UX design, and modern web solutions."
-        keywords="hire developer, full stack developer, web development services, freelance developer"
+        title="Hire Me"
+        description="Hire Durgesh Kumar — Full Stack MERN Developer for your next project. Expert in React, Node.js, MongoDB, Express. Fast delivery, clean code, 100% satisfaction."
+        keywords="Hire Full Stack Developer, Hire MERN Developer, Freelance React Developer, Node.js Developer for Hire, Web Development Services India"
+        url="/hire-me"
       />
       
       <div className="min-h-screen bg-[#0d0d0d] text-white relative overflow-hidden">

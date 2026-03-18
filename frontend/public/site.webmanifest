@@ -1,0 +1,13 @@
+{
+  "name": "Durgesh Kumar — Full Stack MERN Developer",
+  "short_name": "DK Portfolio",
+  "description": "Full Stack MERN Developer Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#C6A972",
+  "icons": [
+    { "src": "/favicon.png",       "sizes": "32x32",   "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

@@ -34,9 +34,10 @@ const AboutPage = () => {
   return (
     <>
       <SEO 
-        title="About - DK Portfolio"
-        description={about?.bio || "Learn more about me"}
-        keywords="about, biography, experience, background"
+        title="About"
+        description={`Learn about Durgesh Kumar — Full Stack MERN Developer from Andhra Pradesh, India. ${about?.bio?.slice(0, 120) || 'Passionate about building scalable web applications with React, Node.js, and MongoDB.'}`}
+        keywords="About Durgesh Kumar, MERN Developer India, Full Stack Developer Background, React Node.js Developer"
+        url="/about"
       />
       
       <section className="pt-32 pb-24 px-4 sm:px-6 min-h-screen bg-[#0d0d0d]">

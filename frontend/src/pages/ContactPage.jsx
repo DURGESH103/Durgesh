@@ -146,9 +146,10 @@ const ContactPage = () => {
   return (
     <>
       <SEO 
-        title="Contact - DK Portfolio"
-        description="Get in touch with me"
-        keywords="contact, email, hire, freelance"
+        title="Contact"
+        description="Get in touch with Durgesh Kumar — Full Stack MERN Developer. Available for freelance projects, full-time roles, and collaborations. Fast response guaranteed."
+        keywords="Contact Durgesh Kumar, Hire MERN Developer, Freelance Developer India, Full Stack Developer Contact"
+        url="/contact"
       />
       
       <div className="min-h-screen bg-[#0d0d0d] text-white relative overflow-hidden">

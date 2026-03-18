@@ -13,10 +13,19 @@ import CTA from '../components/CTA';
 const Home = () => {
   return (
     <>
-      <SEO 
-        title="DK Portfolio - Web Designer & Developer"
-        description="Professional web designer and developer creating premium digital experiences with elegant design and cutting-edge technology."
-        keywords="web design, web development, UI/UX, portfolio, react developer, frontend developer"
+      <SEO
+        title="Home"
+        description="Durgesh Kumar — Full Stack MERN Developer from India. I build fast, scalable web apps with React, Node.js, Express, and MongoDB. Available for freelance and full-time roles."
+        keywords="Durgesh Kumar, Full Stack Developer, MERN Stack, React Developer, Node.js Developer, Portfolio, India"
+        url="/"
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'Durgesh Kumar Portfolio',
+          url: 'https://durgeshkumar.dev',
+          description: 'Full Stack MERN Developer Portfolio',
+          author: { '@type': 'Person', name: 'Durgesh Kumar' }
+        }}
       />
       <Hero />
       <CredibilityMetrics />

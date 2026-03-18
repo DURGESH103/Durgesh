@@ -11,7 +11,8 @@ const projectSchema = new mongoose.Schema({
   featuredImage: { type: String, required: true },
   galleryImages: [{ type: String }],
   featured: { type: Boolean, default: false },
-  category: { type: String }
+  category: { type: String },
+  status: { type: String, enum: ['Completed', 'Ongoing', 'Archived'], default: 'Completed' }
 }, { timestamps: true });
 
 export default mongoose.model('Project', projectSchema);

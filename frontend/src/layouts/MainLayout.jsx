@@ -4,10 +4,10 @@ import ScrollProgress from '../components/ScrollProgress';
 
 const MainLayout = ({ children }) => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="relative overflow-x-hidden">
       <ScrollProgress />
       <Navbar />
-      <main>{children}</main>
+      <main className="relative">{children}</main>
       <Footer />
     </div>
   );

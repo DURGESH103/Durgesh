@@ -55,6 +55,30 @@
   @apply bg-gradient-to-br from-gold to-[#f4e4c1] bg-clip-text text-transparent;
 }
 
+/* Shine sweep animation for card hover */
+@keyframes shine {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+.shine-sweep::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(198, 169, 114, 0.12) 50%,
+    transparent 60%
+  );
+  animation: shine 0.7s ease forwards;
+}
+
+/* Light mode glass override */
+.light .glass {
+  @apply bg-black/[0.03] backdrop-blur-md border border-black/10;
+}
+
 /* GPU Acceleration */
 .gpu-accelerated {
   transform: translateZ(0);
